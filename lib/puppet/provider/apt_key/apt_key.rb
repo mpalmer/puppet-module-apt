@@ -19,6 +19,7 @@ Puppet::Type.type(:apt_key).provide(:apt_key) do
     key_array = key_output.split("\n").collect do |line|
       if line.start_with?('pub')
           pub_line = line
+          fpr_line = nil
       elsif line.start_with?('fpr')
           fpr_line = line
       end
